@@ -2,20 +2,22 @@
 #include <stdio.h>
  
  
-int main (void)
+int main ()
 {
     int a[7] = {0,};
     int sum = 0;
-    int min = 9999999999999;
+    int min = 9999999;
     for (int i = 0; i<7; i++){
-        scanf( "%d", &(a[i]));
+        scanf("%d", &(a[i]));
         if (a[i]%2==1){
-            sum += a[i]
+            sum += a[i];
+            if (a[i]<min){
+            min = a[i];
         }
+        }
+        
     }
-    if (a[i]<min){
-        min = a[i]
-    }
-    printf("%d %d", sum, min)
+    
+    printf("%d\n%d", sum, min);
     return 0;
 }
