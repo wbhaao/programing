@@ -2,8 +2,8 @@
  
 int main(void)
 {
-    char a;
-    scanf("%c",&a);
+    int a;
+    scanf("%d",&a);
     switch(a%12)
     {
         case 0:

@@ -4,18 +4,14 @@
 int main (void)
 {
     
-    int a,b,c, d;
-    scanf("%d %d %d ",&a ,&b, &c);
-    d = a + b + c;
-    d %=1000; .
- 
- 
- 
-    d /= 100; 
-    if( d%2 ){printf("그럭저럭");}
-   
-    else {printf("대박");}
+    int a;
+    scanf("%d",&a);
+    
+    if( ((a%4 == 0) && (a%100 != 0)) ||  (a%400 == 0) ){printf("yes");}
+    else{printf("no");}
+    
     
  
     return 0;
 }
+ 

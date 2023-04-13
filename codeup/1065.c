@@ -8,17 +8,17 @@ int main(void) {
 
     if(a%2==0)
     {
-    printf("%d", a);
+    printf("%d\n", a);
     }
 
     if(b%2==0)
     {
-    printf("%d", b);
+    printf("%d\n", b);
     }
 
     if(c%2==0)
     {
-    printf("%d", c);
+    printf("%d\n", c);
     }
 }
 
