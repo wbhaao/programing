@@ -10,6 +10,6 @@ int main(){
         if (v==0){
             break;
         }
-    }while(1)
+    }while(1);
     return 0;
 }
