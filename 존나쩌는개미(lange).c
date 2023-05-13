@@ -8,4 +8,3 @@ int main(void)
                     abs(y*((posY+t%(y*2))/y%2) - (posY+t%(y*2))%y));
     return 0;
 }
-
