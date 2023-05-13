@@ -40,4 +40,3 @@ def one(y, x, cnt, my_arr):
 
 one(1, 2, 1, arr)
 print(a_cnt)
-~
