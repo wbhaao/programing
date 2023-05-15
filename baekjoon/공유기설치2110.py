@@ -1,32 +1,30 @@
-n, routers = map(int, input().split())
-pos = [0]*n
+n, c = map(int, input().split())
 
+array = []
 for i in range(n):
-    pos[i] = int(input())
-
-pos.sort()
+    array.append(int(input()))
+array.sort()
 
 start = 1
-end = max(pos) - min(pos)
+end = array[-1] - array[0]
+answer = 0
+while start <= end:
+    mid = (start + end) // 2
+    current = array[0]
+    # cnt = 설치된 라우터
+    cnt = 1
 
-def find_value(current_index, installCnt, middle):
-    if max(pos) < middle*(routers-installCnt) + pos[current_index]:
-        return -1
-    if installCnt == routers:
-        return 1
-    for i in range(len(pos)-current_index):
-        try:
-            next_index = pos.index(pos[current_index] + middle + i)
-        except: continue 
-        return find_value(next_index, installCnt+1, middle)
-    return -1
-while start<=end:
-    middle = (start+end)//2
-
-    fV = find_value(0, 1 ,middle)
-
-    if fV == 1:
-        start = middle+1
+    for i in range(1, len(array)):
+        # mid이상으로 떨어진 거리에 route가 있나
+        if array[i] >= current + mid:
+            # 그쪽에 설치하고 current 바꿈
+            cnt += 1
+            current = array[i]
+    # 다 설치 했다면 
+    if cnt >= c:
+        start = mid + 1
+        answer = mid
+    # mid가 너무 크다면
     else:
-        end = middle-1
-print(end)
+        end = mid - 1
+print(answer)
