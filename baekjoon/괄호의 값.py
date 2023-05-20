@@ -1,33 +1,43 @@
-s_stack = []
-b_stack = []
+stack = [] # 스택
+res = 1 # result에 더해주기 전 임시 변수
+result = 0 # 결과 변수
+p = list(input()) # 입력값
 
-def checkVFC(lst, mul):
-    global s_stack
-    global b_stack
-    # (index, 값) 형식
-    for l in enumerate(lst):
-        if l[1] == '(':
-            s_stack.append(0)
-        elif l[1] == ')':
-            if len(s_stack)==0:
-                print(0)
-                exit()
-            s_stack.pop()
-        elif l[1] == '[':
-            b_stack.append(0)
-        elif l[1] == ']':
-            if len(b_stack)==0:
-                print(0)
-                exit()
-            b_stack.pop()
-        if (lst[0]==('(' if lst[l[0]]==')' else '?') and len(s_stack)==0) or \
-           (lst[0]==('[' if lst[l[0]]==']' else '?') and len(b_stack)==0):
-            # 다시 연산할 수 있게 보내줌, 소괄호면 *2 대괄호면 *3
-            if l[0]>1:
-                return checkVFC(lst[1:l[0]], 2 if lst[0]=='(' else 3) * mul
-            else:
-                return checkVFC(lst[2:], mul) + 2 if lst[0]=='(' else 3
+# 1~4번째 과정 시작
+for i in range(len(p)):
+  # 바로 2를 곱한다
+  if p[i]=='(':
+    res *= 2
+    stack.append(p[i])
+  # 바로 3을 곱한다
+  elif p[i]=='[':
+    res *= 3
+    stack.append(p[i])
 
-lst1 = input()
-a = checkVFC(lst1, 1)
-print(a)
+  elif p[i]==')':
+    # stack의 끝과 짝이 맞지 않거나 stack이 비었다면
+    if not stack or stack[-1]!='(':
+      result = 0
+      break
+    # 내 뒤에꺼가 (라서 더해야 하는 상황이라면
+    # 이건 합으로 계산될때 +를 해주고 곱일때는 중간에 뭐가 꼽사리 껴있으니까 딴거 곱하기 해준걸로 만족하고 퇴장한다
+    if p[i-1]=='(': result += res
+    # 짝을 받을때 곱했던 2는 회수
+    # 곱 역할을 하는 괄호가 사라져서 /2를 해준다!!!!!!!!!!!!!
+    res //= 2
+    stack.pop()
+    
+  elif p[i]==']':
+    if not stack or stack[-1]!='[':
+      result = 0
+      break
+    if p[i-1]=='[': result += res
+    res //= 3
+    stack.pop()
+
+
+# 결과 출력
+if stack:
+  print(0)
+else:
+  print(result)
