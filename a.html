@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>노래 투표 사이트</title>
+  <style>
+    /* 전체 페이지 스타일 */
+    /* 전체 페이지 스타일 */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* 바 스타일 */
+.sidebar {
+  width: 200px;
+  background-color: #e6f2ff;
+  padding: 20px;
+  float: left;
+}
+
+/* 바 내용 스타일 */
+.sidebar h2 {
+  color: #333;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+/* 노래 컨테이너 스타일 */
+.song-container {
+  margin-left: 220px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 노래 스타일 */
+.song {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  width: 300px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.song:nth-child(3n) {
+  margin-right: 0;
+}
+
+.song h3 {
+  margin: 0;
+  color: #3366cc;
+}
+
+.song p {
+  margin-top: 5px;
+  color: #666;
+}
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>카테고리</h2>
+    <ul>
+      <li>카테고리 1</li>
+      <li>카테고리 2</li>
+      <li>카테고리 3</li>
+    </ul>
+  </div>
+  
+  <div class="song-container">
+    <div class="song">
+      <h3>노래 제목 1</h3>
+      <p>가수: 가수 이름</p>
+      <p>앨범: 앨범 이름</p>
+      <p>발매일: 발매일</p>
+    </div>
+    
+    <div class="song">
+      <h3>노래 제목 2</h3>
+      <p>가수: 가수 이름</p>
+      <p>앨범: 앨범 이름</p>
+      <p>발매일: 발매일</p>
+    </div>
+    
+    <!-- 다른 노래들도 동일한 방식으로 추가 -->
+    
+  </div>
+</body>
+</html>
