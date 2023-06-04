@@ -40,4 +40,4 @@ while q:
     if graph[vv][z] == 1 and visit_list2[z]==0:
       q.append(z)
       visit_list2[z] = 1
-    
+## visit_list2를 if 안에 넣지 않으면 같은 값이 2개이상 들어갈 수 있다.
