@@ -14,7 +14,7 @@ def postorder(first,end):
     if first>end:
         return
     mid = end+1
-    f, e = int(first+1), int(end+1)
+    f, e = int(first), int(end)
     while f<=e:
         middle = (f+e)//2
         if num_list[first] < num_list[middle]:
