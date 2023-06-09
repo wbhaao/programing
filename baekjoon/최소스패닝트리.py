@@ -5,10 +5,12 @@ input = sys.stdin.readline
 V, E = map(int, input().split())
 # 방문 여부
 visited = [False]*(V+1)
-# 간선 저장
+# 간선 list
 Elist = [[] for _ in range(V+1)]
 # 현재그래프에서 짫은 경로 저장
 heap = [[0, 1]]
+
+
 for _ in range(E):
     s, e, w = map(int, input().split())
     Elist[s].append([w, e])
