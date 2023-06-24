@@ -8,14 +8,12 @@ def DFS(start, visited, graph, group):
 
     # 인접 노드 탐색
     for v in graph[start]:
-        if visited[v] == 0:  # 아직 방문하지 않은 노드
-            # -group : 현재 노드의 그룹과 다른 값 전달
-            # visited, graph는 리스트 넘겨주는 거라 상관 x
+        if visited[v] == 0:
             result = DFS(v, visited, graph, -group)
             if not result:
                 return False
         else:
-            if visited[v] == group:  # 이미 방문한 곳 중에서 노드가 현재 그룹과 같으면 이분 그래프가 아님
+            if visited[v] == group:
                 return False
     return True
 
