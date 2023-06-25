@@ -11,6 +11,7 @@
             - outOper라는 매개변수를 만들어서 활용
 :       2. 
 
+왜 48이 나올까
 
 '''
 import math
@@ -21,7 +22,7 @@ sys.setrecursionlimit(10**9)
 numsCount = int(read())
 nums = deque(list(map(int, read().split())))
 operators = list(map(int, read().split()))
-minNum, maxNum = 2000000000, 0
+minNum, maxNum = 2000000000, -2000000000
 def setOper(i):
     if i==0:
         return '+'
@@ -32,28 +33,22 @@ def setOper(i):
     else:
         return '/'
 # num을 deque로 쓸 수 있음
-def DFS(nums, operators, result, outOper):
-    global minNum
-    global maxNum
-    # 받은 정보로 계산
-    if (outOper != None):
-        operators[outOper] -= 1
-        a = nums.popleft()
-        b = nums.popleft()
-        nums.appendleft(math.floor(eval(f"{a} {setOper(outOper)} {b}")))
-        result = nums[0]
+def DFS(depth, total, plus, minus, multiply, divide):
+    global minNum, maxNum
     # 연산자 다 구했을때 // num로 매개 받은걸로 할 수 있음
-    if sum(operators) == 0:
-        if result>=maxNum:
-            maxNum = result
-        if result<=minNum:
-            minNum = result
+    if depth == numsCount:
+        maxNum = max(total, maxNum)
+        minNum = min(total, minNum)
         return
     # 연산자 정하기
-    for i in range(4):
-        if operators[i] > 0:
-            # operator 사용해서 -1
-            # 연산자 대입해서 나온 값 deque에 넣기
-            DFS(deque(nums), list(operators), nums[0], i)
-DFS(deque(nums), list(operators), 0, None)
-print(f"{(maxNum)}\n{minNum}")
+    if plus:
+        DFS(depth + 1, total + nums[depth], plus - 1, minus, multiply, divide)
+    if minus:
+        DFS(depth + 1, total - nums[depth], plus, minus - 1, multiply, divide)
+    if multiply:
+        DFS(depth + 1, total * nums[depth], plus, minus, multiply - 1, divide)
+    if divide:
+        DFS(depth + 1, int(total / nums[depth]), plus, minus, multiply, divide - 1)
+
+DFS(1, nums[0], operators[0], operators[1], operators[2], operators[3])
+print(f"{(int(maxNum))}\n{int(minNum)}")
