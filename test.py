@@ -1,1 +1,3 @@
-print(eval(f"{1} + {2}"))
+if True:
+  a=1
+print(a)
