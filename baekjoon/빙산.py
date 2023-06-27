@@ -34,7 +34,7 @@ def solve(): # 1 ~ 900000 년, 전체순회 반복작업
                     #주변 물이 있다면
                     if arr[ni][nj]==0:
                         # 그 자리 a_sub칸 낮추기
-                        a_sub[i][j]+=1
+                        a_sub[i][j] += 1 
                         grounds.add((i, j))
 
         # [2] 높이 낮추기
