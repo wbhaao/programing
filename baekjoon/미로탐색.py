@@ -3,7 +3,6 @@ n, m = map(int, input().split())
 ground = []
 for _ in range(n):
   ground.append(list(map(int, list(input()))))
-
 def BFS():
   # n:4이고, m:6일떄
   '''
@@ -23,11 +22,11 @@ def BFS():
     # print(v, end = " ")
     for i, j in ((1, 0), (0, 1), (0, -1), (-1, 0)):
       di, dj = ci+i, cj+j
-      if (visited[di][dj]==False) and (ground[di][dj]==1)\
-          and (di>=0) and (dj >= 0) and (di < n) and (dj < m):
-        if (di==n and dj==m):
-          return cnt+1
-        
-        q.append((di, dj, cnt+1))
-        visited[di][dj] = True
+      if (di>=0) and (dj >= 0) and (di < n) and (dj < m):
+        if (visited[di][dj]==False) and (ground[di][dj]==1):
+          if (di+1==n and dj+1==m):
+            return cnt+1
+          
+          q.append((di, dj, cnt+1))
+          visited[di][dj] = True
 print(BFS())
