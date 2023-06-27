@@ -10,23 +10,21 @@ def BFS():
   [0, 0, 0, 0, 0, 0]
   [0, 0, 0, 0, 0, 0]
   [0, 0, 0, 0, 0, 0]
+  
+  원래 cnt를 deque에 넣었는데
+  list값을 바꾸면서 돌수 있다
   '''
-  visited = [[False]*m for _ in range(n)]
   # 3번째 : cnt
   q = deque()
-  q.append((0, 0, 1))
-  visited[0][0] = True
+  q.append((0, 0))
   while q:
     # 현재 i, j
-    ci, cj, cnt = q.popleft()
+    ci, cj = q.popleft()
     # print(v, end = " ")
     for i, j in ((1, 0), (0, 1), (0, -1), (-1, 0)):
       di, dj = ci+i, cj+j
-      if (di>=0) and (dj >= 0) and (di < n) and (dj < m):
-        if (visited[di][dj]==False) and (ground[di][dj]==1):
-          if (di+1==n and dj+1==m):
-            return cnt+1
-          
-          q.append((di, dj, cnt+1))
-          visited[di][dj] = True
+      if 0 <= di < n and 0 <= dj < m and ground[di][dj] == 1:
+        q.append((di, dj))
+        ground[di][dj] += ground[ci][cj]
+  return ground[di-1][dj-1]
 print(BFS())
