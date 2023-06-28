@@ -21,21 +21,23 @@ for i in range(M):
 
 def BFS():
   q = deque()
-  q.append(X-1)
-
-
-BFS()
-print()
-
-
-
-
-
-
-
-
-
-
-
-
-
+  q.append((X-1, 1))
+  result = []
+  while q:
+    curNode, time = q.popleft()
+    for i in graph[curNode]:
+      if visited[i] == 0:
+        if time==K:
+          result.append(i+1)
+        elif time>K:
+          break
+        else:
+          visited[i] = 1
+          q.append((i, time+1))
+  return result
+bfs = BFS()
+if not bfs:
+  print(-1)
+else:
+  for i in bfs:
+    print(i)
