@@ -33,12 +33,9 @@ def dijkstra(x):
         # 연결된 간선이 여러개 있을 수 있다.
         for nw, nx in graph[x]:
             # 간선을 연결 (이전모든노드와 다음 노드 비용합치기)
-            nd = d + nw
-            # 그 노드의 비용이 현재 비용보다 많다면 (교체)
+            nd = nw + d
             if visited[nx] > nd:
-                # 합친 비용과 간 노드 위치 넣음
                 heapq.heappush(pq, (nd, nx))
-                # 최소비용 넣기
                 visited[nx] = nd
 
 
