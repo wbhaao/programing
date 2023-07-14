@@ -10,7 +10,7 @@ for row in range(N):
 
 for row in range(N):
     row = list(map(int, input().split()))
-    lst2.append(row)
+    lst2.append(row) 
     
 for row in range(N):
     for col in range(M):
