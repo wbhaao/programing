@@ -1,3 +1,4 @@
-lst = [0]
+lst = "asdasdas"
 
-print(lst==[])
+print(lst.rindex('a'))
+print(len(lst)-lst[::-1].index('a')-1)
