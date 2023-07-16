@@ -13,7 +13,6 @@ for _ in range(T):
     dp[0] = 1
     for coin in coins:
         for i in range(1, M+1):
-            # 코인을 쓸 수 있으면
             if i >= coin:
                 dp[i] += dp[i-coin]
     print(dp[M])
