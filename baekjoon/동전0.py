@@ -4,15 +4,14 @@ input = sys.stdin.readline
 N, price = map(int, input().split())
 lst = []
 cnt = 0
-i = -1
-for z in range(N):
+for i in range(N) :               
     lst.append(int(input()))
-while price>0:
-    if price-lst[i] >= 0:
-        cnt += 1
-        price-=lst[i]
-    else:
-        i -= 1
+    
+for j in reversed(range(N)):
+    if price - lst[j] >= 0:    
+        cnt += price // lst[j]   
+        price = price % lst[j]     
+    if price == 0 : break    
 print(cnt)    
     
     
