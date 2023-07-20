@@ -86,14 +86,14 @@ lst = list(map(int, input().split()))
 
 left, right = 0, max(lst)
 answer = 2100000000
-while abs(left - right)>1.1 :
+while left<=right :
     mid = (left + right) // 2
     total = 0
 
     for l in lst:
         if l >= mid:
             total += l - mid
-    
+    # 줄 수 있는 사탕보다 줘야 할 사탕이 많읋 떄
     if total > M:
         left = mid + 1
     else:

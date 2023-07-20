@@ -1,9 +1,9 @@
-numbers = set(range(1, 10000))
-remove_set = set()  
-for num in numbers :
+nums = set(range(1, 10000))
+del_nums = set()  
+for num in nums :
     for n in str(num):
         num += int(n)
-    remove_set.add(num) 
-self_numbers = numbers - remove_set  
-for self_num in sorted(self_numbers):
+    del_nums.add(num) 
+self_nums = nums - del_nums  
+for self_num in sorted(self_nums):
     print(self_num)
