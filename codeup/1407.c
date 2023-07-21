@@ -1,12 +1,13 @@
-#include<stdio.h>
 
+#include<stdio.h>
+ 
+ 
 int main(){
-    char b[200000];
-    scanf("%s", b);
-    int index = 0;
-    while(b[index]){
-        if (b[index] != " "){
-            printf("%s", b[index]);
+    char sss[101];
+    scanf("%s", sss);
+    for (int i = 0; sss[i] != '\0'; i++) {
+        if (sss[i] != ' '){
+            printf("%c", sss[i]);
         }
     }
     return 0;

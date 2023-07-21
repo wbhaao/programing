@@ -5,7 +5,7 @@ int main(){
     scanf("%d", &a);
     for (double i = 0; i < a; i++)
     {
-        printf("%.2lf ", i);
+        printf("*");
     }
     return 0;
 }
