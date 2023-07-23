@@ -20,7 +20,6 @@ int main (void)
         b = a;
         a = temp;
     }
- 
     printf("%d %d %d",a,b,c);
     return 0;
 }

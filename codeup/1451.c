@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main(){
     int a=0, b=0;
-    int lst[100000001];
+    int lst[100000];
     scanf("%d", &a);
     for ( int i = 0; i < a; i++ ){
         scanf("%d", &lst[i]);
