@@ -16,10 +16,9 @@ def dfs():
     # 추가할 숫자
     for i in range(1, N+1):
         # 안들어있으면
-        if i not in s:
-            s.append(i)
-            # 추가 or 출력
-            dfs()
-            # 출력했으면 pop
-            s.pop()
+        s.append(i)
+        # 추가 or 출력
+        dfs()
+        # 출력했으면 pop
+        s.pop()
 dfs() 
