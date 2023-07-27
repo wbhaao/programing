@@ -49,9 +49,7 @@ while i < len(word):
         start = i
         while i < len(word) and word[i].isalnum():
             i+=1
-        tmp = word[start:i] # 숫자,알파벳 범위에 있는 것들을
-        tmp.reverse()       # 뒤집는다
-        word[start:i] = tmp
+        word[start:i] = word[start:i].reverse() # 숫자,알파벳 범위에 있는 것들을 # 뒤집는다
     else:                   # 괄호도 아니고 알파,숫자도 아닌것 = 공백
         i+=1                # 그냥 증가시킨다
 print("".join(word))
