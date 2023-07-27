@@ -7,6 +7,7 @@ for i in range(len(lst)-1):
         if  lst[i] < lst[j]:
             result = lst[j]
             print(result, end=" ")
+            result = -1
             break
     if result == -1:
         print(result, end=" ")
