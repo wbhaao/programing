@@ -1,48 +1,32 @@
 import sys
 input = sys.stdin.readline
+N, M = map(int, input().split())
+arr = [[] for _ in range(N)]
+answer = 0
 
-def listHandler(a, b, l):
+def findMosOfNum(y, x, _arr):
     try:
-        if a < 0 or b < 0:
+        if y < 0 or x < 0:
             return 0
-        return l[a][b]
+        return _arr[y][x]
     except:
         return 0
+for i in range(N):
+    arr[i] = list(map(int, input().split()))
+# [i//N][i%N]
+for i in range(N**2):
+    pos = [i//N, i%N]
+    cross = arr[pos[0]][pos[1]]
+    straight = arr[pos[0]][pos[1]]
+    
+    for j in range(-M, M+1):
+        if j==0:
+            continue
+        straight += findMosOfNum(pos[0]+j, pos[1], arr)
+        straight += findMosOfNum(pos[0], pos[1]+j, arr)
+        cross += findMosOfNum(pos[0]+j, pos[1]+j, arr)
+        cross += findMosOfNum(pos[0]-j, pos[1]+j, arr)
+    cross = max(cross, straight)
+    answer = max(cross, answer)
+print(answer)
 
-n, m = map(int, input().split(" "))
-arr = []
-for i in range(n):
-    arr.append(list(map(int, input().split())))
-if m == 0:
-    print(max(sum(arr, [])))
-else:
-    maximum = sum(sorted(sum(arr, []), reverse=True)[0:m*4+1])
-    largest = 0
-    a = 0
-    printed = False
-    for i in arr:
-        b = 0
-        for j in i:
-            cross = 0
-            diagonal = 0
-            for i in range(1, m+1):
-                cross += listHandler(a+i, b, arr)
-                cross += listHandler(a-i, b, arr)
-                cross += listHandler(a, b+i, arr)
-                cross += listHandler(a, b-i, arr)
-                diagonal += listHandler(a+i, b+i, arr)
-                diagonal += listHandler(a+i, b-i, arr)
-                diagonal += listHandler(a-i, b+i, arr)
-                diagonal += listHandler(a-i, b-i, arr)
-            cross += listHandler(a, b, arr)
-            diagonal += listHandler(a, b, arr)
-            b += 1
-            if max(cross, diagonal) == maximum:
-                print(max(cross, diagonal))
-                printed = True
-                break
-            elif max(cross, diagonal) > largest:
-                largest = max(cross, diagonal)
-        a += 1
-    if not printed:
-        print(largest)
