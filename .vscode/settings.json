@@ -1,4 +1,7 @@
 {
     "editor.fontFamily": "D2Coding",
-    "editor.fontSize": 17
+    "editor.fontSize": 17,
+    "files.associations": {
+        "stdio.h": "c"
+    }
 }

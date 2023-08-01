@@ -1,3 +1,6 @@
+'''
+컷!!!!!!!!!!!
+'''
 import sys
 input = sys.stdin.readline
 N, M = map(int, input().split())
@@ -18,7 +21,6 @@ for i in range(N**2):
     pos = [i//N, i%N]
     cross = arr[pos[0]][pos[1]]
     straight = arr[pos[0]][pos[1]]
-    
     for j in range(-M, M+1):
         if j==0:
             continue
