@@ -17,6 +17,7 @@ N, X = map(int, input().split())
 while N != 0:
     N -= 1
     for l in lucciGround:
+        l[0] = 
 
 
 
