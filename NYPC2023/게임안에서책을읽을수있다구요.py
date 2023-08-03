@@ -1,7 +1,6 @@
 '''
 프로그램이 안멈춰서 안되는 거였ㅈ다다다다다다ㅏ
 '''
-
 import math #math 모듈을 먼저 import해야 한다.
 N, M = map(int, input().split())
 cnt = 0
