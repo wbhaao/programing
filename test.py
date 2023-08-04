@@ -1,3 +1,1 @@
-ex_str = "asddd"
-
-print(ex_str.center(10, '#'))
+print(len(bin(123))-2)
