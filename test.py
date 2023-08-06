@@ -1,1 +1,1 @@
-print(len(bin(123))-2)
+print(len(bin(93))-2)
