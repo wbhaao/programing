@@ -1,7 +1,11 @@
 {
-    "editor.fontFamily": "D2Coding",
-    "editor.fontSize": 17,
-    "files.associations": {
-        "stdio.h": "c"
-    }
+  "editor.fontFamily": "D2Coding",
+  "editor.fontSize": 17,
+  "files.associations": {
+    "stdio.h": "c"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none"
 }
