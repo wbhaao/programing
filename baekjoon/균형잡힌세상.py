@@ -1,44 +1,30 @@
-import sys
+"""
+stack안쓰니까 이상한 경우를 다 구해야해서 힘들었따
+"""
 
-input = sys.stdin.readline
 while True:
-    A = input()
-    state = ""
-    sayd = True
-    lst = [0] * 2
-    if A == ".\n":
+    a = input()
+    stack = []
+
+    if a == ".":
         break
-    for i in A:
-        if i == "(":
-            state = "("
-            lst[0] += 1
-        elif i == ")":
-            if state == "[":
-                print("no")
-                sayd = False
-                break
-            state = ")"
-            lst[0] -= 1
-            if lst[0] < 0:
-                print("no")
-                sayd = False
-                break
-        elif i == "[":
-            state = "["
-            lst[1] += 1
+
+    for i in a:
+        if i == "[" or i == "(":
+            stack.append(i)
         elif i == "]":
-            if state == "(":
-                print("no")
-                sayd = False
+            if len(stack) != 0 and stack[-1] == "[":
+                stack.pop()
+            else:
+                stack.append("]")
                 break
-            state = "]"
-            lst[1] -= 1
-            if lst[1] < 0:
-                print("no")
-                sayd = False
+        elif i == ")":
+            if len(stack) != 0 and stack[-1] == "(":
+                stack.pop()
+            else:
+                stack.append(")")
                 break
-    if sayd:
-        if lst[0] == 0 and lst[1] == 0:
-            print("yes")
-        else:
-            print("no")
+    if len(stack) == 0:
+        print("yes")
+    else:
+        print("no")
