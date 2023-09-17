@@ -1,15 +1,19 @@
-import sys
-input = sys.stdin.readline
+from sys import stdin
+def input():
+    return stdin.readline().rstrip()
 
 N, M = map(int, input().split())
-lst1 = []
-for i in range(N):
-    lst1.append(input())
-for i in range(M):
-    A = input()
-    try:
-        B = int(A)-1
-        print(lst1[B], end='')
-    except:
-        print(lst1.index(A)+1, end='')
+by_id = {}
+by_name = {}
 
+for i in range(1, N + 1):
+    pokemon = input()
+    by_id[i] = pokemon
+    by_name[pokemon] = i
+
+for _ in range(M):
+    x = input()
+    if x.isdigit():
+        print(by_id[int(x)])
+    else:
+        print(by_name[x])
