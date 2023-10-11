@@ -1,5 +1,7 @@
 N = int(input())
-lst = list(map(int, input().split()))
+lst = []
+for i in range(N):
+    lst.append(int(input()))
 dp = [0] * N
 
 def w(i, N):
