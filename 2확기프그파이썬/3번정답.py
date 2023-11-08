@@ -11,3 +11,4 @@ def max_value(data):
     
 lst = list(map(int, input().split()))
 print(max_value(lst))
+

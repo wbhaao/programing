@@ -5,5 +5,4 @@ def Sum1(data):
         return data[0]
     else:
         return data[0] + Sum1(data[1:])
-
 print(Sum1(lst))
