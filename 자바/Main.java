@@ -1,10 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        int a = 3;
+        boolean aBcD;
+        byte 가다가;
+        short _abcd;
+        char $abcd;
 
-        int b;
-        b = 4;
-        System.out.println(a);
-        System.out.println(b);
+        final double PI;
+        final int MY_DATA;
+        final float myData; // 소문자는 사용안함
+        
     }
 }
