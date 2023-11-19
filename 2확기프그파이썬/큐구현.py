@@ -1,49 +1,54 @@
-QUEUE_SIZE = 5
-
 class CircularQueue:
-    def __init__(self, capacity=QUEUE_SIZE):
+    def __init__(self, capacity=5):
         self.capacity = capacity
-        self.list = [None]*capacity
-        self.front = 0
-        self.rear = 0
-    def isEmpty(self):
-        return not bool(self.list[self.front])
-    def isFull(self):
-        return bool(self.list[self.rear])
-    def enqueue(self, value) :
-        if self.isFull():
-            print('채워졌어용')
-            return
-        self.list[self.rear] = value
-        self.rear = (self.rear + 1)%QUEUE_SIZE
+        self.queue = [None]*capacity
+        self.front = self.rear = 0
 
-        self.peak(self.list[self.rear])
+    def is_empty(self):
+        return self.queue[self.front] is None
+
+    def is_full(self):
+        return self.queue[self.rear] is not None
+
+    def enqueue(self, value):
+        if self.is_full():
+            print('큐가 가득 찼습니다.')
+            return
+        self.queue[self.rear] = value
+        self.rear = (self.rear + 1) % self.capacity
+        self.display_queue()
+
     def dequeue(self):
-        if self.isEmpty():
-            print('비엇어용')
+        if self.is_empty():
+            print('큐가 비었습니다.')
             return
-        ans = self.list[self.front]
-        self.list[self.front] = None
-        self.front = (self.front + 1)%QUEUE_SIZE
+        dequeued_value = self.queue[self.front]
+        self.queue[self.front] = None
+        self.front = (self.front + 1) % self.capacity
+        self.display_queue()
+        return dequeued_value
 
-        self.peak(ans)
-    def peak(self, value):
-        print('얘를 수정함',value, self.list)
+    def display_queue(self):
+        print('큐 상태:', self.queue)
+
+
 queue = CircularQueue()
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
+queue.enqueue(4)
+queue.enqueue(5)
+queue.enqueue(6)  # 큐가 가득 찼다는 메시지가 출력되어야 합니다.
 
 queue.dequeue()
 queue.dequeue()
 queue.dequeue()
 queue.dequeue()
+queue.dequeue()
+queue.dequeue()  # 큐가 비었다는 메시지가 출력되어야 합니다.
 
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
-queue.enqueue(3)
-queue.enqueue(3)
+queue.enqueue(4)
+queue.enqueue(5)
