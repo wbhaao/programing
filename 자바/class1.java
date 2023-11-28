@@ -1,18 +1,28 @@
-class A {
-        A() {
-            System.out.println("첫 번째 생성자");
-        }
-        A(int a) {
-            this();
-            System.out.println("두 번째 생성자");
-        }
-       /*
-        void abc() {
-            this();
-        }
-       */
-    }
-
+// class A {
+//         A() {
+//             System.out.println("첫 번째 생성자");
+//         }
+//         A(int a) {
+//             this();
+//             System.out.println("두 번째 생성자");
+//         }
+//        /*
+//         void abc() {
+//             this();
+//         }
+//        */
+//     }
+    class A {
+ void print() {
+ System.out.println("A 클래스");
+ }
+}
+class B extends A {
+ @Override
+ void print() {
+ System.out.println("B 클래스");
+ }
+}
 public class class1 {
     // 클래스는 일반 클래스, 추상 클래스
     // 인터페이스
@@ -53,16 +63,30 @@ public class class1 {
 
     //this()는 그 클래스의 생성자를 호출하는 것이다. this()는 생성자 내부에서 호출하여야 한다.
     
-    public static void main(String[] args) {
-        // 객체 생성
-        A a1 = new A();
-        System.out.println();
-        A a2 = new A(3);
-    }
+    // public static void main(String[] args) {
+    //     // 객체 생성
+    //     A a1 = new A();
+    //     System.out.println();
+    //     A a2 = new A(3);
+    // }
     //>>>첫 번째 생성자
 
     //>>>첫 번째 생성자
     //>>>두 번째 생성자
 
     // 292
+
+ public static void main(String[] args) {
+ // A 타입 / A 생성자
+ A aa = new A();
+ aa.print();
+
+ // B 타입 / B 생성자
+ B bb = new B();
+ bb.print();
+
+ // A 타입 / B 생성자
+ A ab = new B();
+ ab.print();
+ }
 }
