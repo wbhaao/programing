@@ -14,9 +14,6 @@ class Queue:
             return None
         return self.items.pop(0) # Queue의 첫 번째 요소를 반환하고 삭제 
 
-    def size(self): # Queue의 크기를 반환하는 함수
-        return len(self.items)
-
     def peek(self): # Queue의 앞쪽 데이터를 확인하는 함수
         if self.is_empty(): # 만약 Queue가 비어 있다면
             print("Queue is empty.") # Queue가 비어 있다는 메시지를 출력 
