@@ -4,6 +4,9 @@ BFS를 써서 지역 개수 세기
 이중 for문으로 전부 돌기
 visited로 간 지역 체크
 '''
+'''
+이거 한번 더 봐야함
+'''
 from collections import deque
 
 N = int(input())
