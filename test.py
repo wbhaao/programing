@@ -1,2 +1,2 @@
-a = [[1,2,3],[4,5,6]]
-print(max(sum(a, [])))
+a = 10
+print(bin(a))
