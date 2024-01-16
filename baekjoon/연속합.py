@@ -1,3 +1,6 @@
+'''
+얘는 벨로그 써야함
+'''
 N = int(input())
 lst = list(map(int, input().split()))
 
