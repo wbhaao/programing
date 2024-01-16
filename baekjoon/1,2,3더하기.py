@@ -4,17 +4,9 @@
 '''
 T = int(input())
 answer = []
+dp = [1,2,4] + [0]*999998
+for i in range(3, 1000001):
+    dp[i] = (dp[i-1] + dp[i-2] + dp[i-3])%1000000009
 for _ in range(T):
     N = int(input())
-    if N<3:
-        answer.append(N + N//3)
-        continue
-    lst = [1,2,4]
-    key = 0
-    
-    for i in range(4, N+1):
-        lst[key] = lst[0] + lst[1] + lst[2]
-        key = (key+1)%3
-    answer.append(lst[(key-1)%3])
-for i in answer:
-    print(i)
+    print(dp[N-1])
