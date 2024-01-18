@@ -1,5 +1,3 @@
-
-
 T = int(input())
 M, N, K = map(int, input().split())
 cnt = 0
