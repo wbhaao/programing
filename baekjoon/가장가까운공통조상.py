@@ -21,29 +21,30 @@ or
 
 '''
 from sys import stdin
+from collections import deque
 T = int(stdin.readline())
 for _ in range(T):
     N = int(stdin.readline())
     # 1부터 시작
-    graph = [[] for _ in range(N+1)]
+    graph = [None for _ in range(N+1)]
     for _ in range(1, N):
         # graph[부모] = [자식들]
         # 역순 탐색만 가능하게
         # graph[B].append(A)로 만듦
         A, B = map(int, stdin.readline().split())
-        graph[B].append(A)
+        graph[B] = A
 
     C, D = map(int, stdin.readline().split())
-    c_parent_list = [C] + list(graph[C])
-    d_parent_list = [D] + list(graph[D])
+    c_parent_list = deque([C, graph[C]])
+    d_parent_list = deque([D, graph[D]])
     while True:
         # 공통된 부분이 있다면 탈주
         a = set(c_parent_list) & set(d_parent_list)
         if a != set([]):
             print(list(a)[0])
             break
-        if c_parent_list != [] and graph[c_parent_list[-1]] != []:
-            c_parent_list.append(graph[c_parent_list[-1]][0])
-        if d_parent_list != [] and graph[d_parent_list[-1]] != []:
-            d_parent_list.append(graph[d_parent_list[-1]][0])
+        if c_parent_list != deque([]) and graph[c_parent_list[-1]] != None:
+            c_parent_list.append(graph[c_parent_list[-1]])
+        if d_parent_list != deque([]) and graph[d_parent_list[-1]] != None:
+            d_parent_list.append(graph[d_parent_list[-1]])
 
