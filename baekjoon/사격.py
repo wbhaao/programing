@@ -13,7 +13,7 @@ while left < right:
         total = sum(s) + (m-n)*s[-1]
     else:
         total = sum(s[idx:]) + (m-n+idx)*s[idx-1]
-    if total >= a:
+    if total >= a: 
         right = mid
     else:
         left = mid + 1
