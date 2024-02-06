@@ -8,22 +8,16 @@
 B의 위치를 계산
 
 '''
-AX, AY = map(int, input().split())
-BX, BY = map(int, input().split())
-CX, CY = map(int, input().split())
-# A, C를 지나는 함수 기울기
-try:
-    m = (AY - CY) / (AX - CX)
-except:
-    print(0)
-y_intercept = -(m * AX - AY)
-# 함수 식 만들었다리
-# X를 넣어서 Y값 추출
-y = BX*m + y_intercept
-x = (-y + y_intercept)/m
-if abs(y/x) > 1:
+def CCW(x1, y1, x2, y2, x3, y3):
+    return  x1*y2 + x2*y3 + x3*y1 - x2*y1 - x3*y2 - x1*y3
+
+x1, y1 = map(int, input().split())
+x2, y2 = map(int, input().split())
+x3, y3 = map(int, input().split())
+result = CCW(x1, y1, x2, y2, x3, y3)
+if result > 0:
     print(1)
-elif abs(y/x) < 1:
+elif result < 0:
     print(-1)
 else:
     print(0)

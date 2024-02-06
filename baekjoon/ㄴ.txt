@@ -1,0 +1,6 @@
+insert into giants_money values (1001, '배영수', '투수', '20230101');
+insert into giants_money values (1002, '박홍식', '내야수', '20210218');
+insert into giants_money values (1003, '전준호', '외야수', '20221026');
+insert into giants_money values (1004, '최경철', '포수', '20170820');
+insert into giants_money values (1004, '최경철', '포수', '20170820');
+insert into giants_money values (1004, '최경철', '포수', '20170820');
