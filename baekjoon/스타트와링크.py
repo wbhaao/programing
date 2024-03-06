@@ -1,14 +1,10 @@
-# ✨ 입력
 import sys
 input = sys.stdin.readline
 N = int(input())
 board = [list(map(int,input().split())) for _ in range(N)]
 visited = [False for _ in range(N)]
-INF = 2147000000
-res = INF
-
-# ✨ DFS
-def DFS(L,idx):
+res = 2140000000
+def DFS(L, idx):
     global res
     if L == N//2:
         A = 0
@@ -26,6 +22,5 @@ def DFS(L,idx):
             visited[i] = True
             DFS(L+1,i+1)
             visited[i] = False
-            
-DFS(0,0)
+DFS(0, 0)
 print(res)

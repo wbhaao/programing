@@ -1,27 +1,14 @@
-import sys
-from collections import deque
-input = sys.stdin.readline
-result = []
-N, M = map(int, input().split())
+'''
+정렬 구현 문제
+'''
 
-visited = [False] * (N+1)
-lst = [[] for _ in range(N+1)]
-
-indegree = [0] * (N+1)
-for i in range(M):
-    A, B = map(int, input().split())
-    lst[A].append(B)  
-    indegree[B] += 1
-q = deque()
-for i in range(1, N+1):
-    if indegree[i] == 0:
-        q.append(i)
-        
-while q:
-    now = q.popleft()
-    result.append(now)
-    for i in lst[now]:
-        indegree[i] -= 1
-        if indegree[i] == 0:
-            q.append(i)
-print(*result)
+N = int(input())
+for _ in range(N):
+    arr=list(map(int,input().split()))
+    total=0
+    for i in range(1,len(arr)-1):
+        for j in range(i+1,len(arr)): # i 뒤에 애들과 전부 비교해서
+            if arr[i] > arr[j]:  # i가 더 크면
+                arr[i],arr[j] = arr[j],arr[i]  # 자리바꾸기
+                total+=1
+    print(arr[0], total)
