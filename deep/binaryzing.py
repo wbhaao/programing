@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 img = cv.imread('result.jpg', cv.IMREAD_GRAYSCALE)
 assert img is not None, "file could not be read, check with os.path.exists()"
 
-# Olzls} +aHst7]
+# Olzls} +aHst7
 
 ret, thresh1= cv.threshold(img, 20,255, cv.THRESH_BINARY)
 ret,thresh2 = cv.threshold(img,20,255,cv.THRESH_BINARY_INV)
