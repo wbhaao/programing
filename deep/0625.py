@@ -40,7 +40,7 @@ cv2.setMouseCallback("test", mouseCallback)
 
 status, frame = cam.read()
 template = frame.copy()
-
+ 
 while not click2:
     if click:
         cv2.imshow("test", frameCp)
