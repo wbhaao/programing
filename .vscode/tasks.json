@@ -1,58 +1,72 @@
+/* 사용자 지정 빌드 명령어들
+ */
 {
-  "version": "2.0.0",
+  // "tasks": task 요소들은 []내부에 포함되며, {}와 ,로 구분됩니다.
   "tasks": [
     {
-      "type": "shell",
-      "label": "C bulid for clang",
-      "command": "clang",
+      // "type" : 작업 유형으로 "shell", "process", "cppbuild" 등 지정된 작업유형을 설정합니다.
+      // 작업 유형은 임의로 작성할 수 없습니다.
+      "type": "cppbuild",
+
+      // "label" : 해당 작업의 이름을 임의로 지정할 수 있습니다.
+      "label": "C/C++: g++.exe build active file",
+
+      // "command" : 빌드 명령어를 작성합니다. 컴파일러 경로를 통해 프로그램을 실행합니다.
+      "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+
+      // "args" : command에 옵션으로 사용될 인자들로, 컴파일러 실행시 전달할 인자들에 해당합니다.
       "args": [
+        "-fdiagnostics-color=always",
+        "-Wall",
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
+
+      // "cwd" : 빌드 작업이 실행될 경로, 해당 프로젝트 폴더입니다.
       "options": {
-        "cwd": "${workspaceRoot}"
+        "cwd": "${fileDirname}"
       },
-      "presentation": {
-        "clear": true
+
+      //  "problemMatcher" : 사용자 인터페이스에서 작업 출력이 처리되는 방식을 정의 합니다.
+      "problemMatcher": {
+        //컴파일 에러 확인
+        "fileLocation": ["relative", "${workspaceRoot}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
       },
+
+      // "group" :해당 task의 그룹을 지정합니다.
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": []
+
+      // "detail" : >tasks : run task를 했을 때 설명으로 보일 내용.
+      "detail": "command : C:\\msys64\\ucrt64\\bin\\g++.exe"
     },
+
+    // 바이너리 실행
     {
-      "type": "shell",
-      "label": "C++ bulid for clang++",
-      "command": "clang++",
-      "args": [
-        "-g",
-        "${file}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
-      ],
-      "options": {
-        "cwd": "${workspaceRoot}"
-      },
-      "presentation": {
-        "clear": true
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "shell",
       "label": "execute",
-      "command": "${fileDirname}/${fileBasenameNoExtension}",
+      "command": "cmd",
       "group": "test",
-      "presentation": {
-        "clear": true
-      }
+      "args": ["/C", "${fileDirname}\\${fileBasenameNoExtension}"]
     }
-  ]
+  ],
+
+  "version": "2.0.0",
+  "runner": "terminal",
+  "type": "shell",
+  "echoCommand": true,
+  "presentation": {
+    "reveal": "always"
+  }
 }
