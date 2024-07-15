@@ -1,62 +1,62 @@
-// /*
-// C 매크로에 대해서 알아보자
-// 매크로로 인해 가독성이 떨어진다고 하는데
-// 매크로는 실무에서 매우 중요한 기능 중 하나이다
+/*
+C 매크로에 대해서 알아보자
+매크로로 인해 가독성이 떨어진다고 하는데
+매크로는 실무에서 매우 중요한 기능 중 하나이다
 
-// 매크로는 다음과 같이 다양하게 활용할 수 있다
-// - 상수 정의하기
-// - C 함수를 작성하지 않고 함수로 사용하기
-// - 루프 풀기
-// - 헤더 가드
-// - 코드 생성
-// - 조건부 컴파일
+매크로는 다음과 같이 다양하게 활용할 수 있다
+- 상수 정의하기
+- C 함수를 작성하지 않고 함수로 사용하기
+- 루프 풀기
+- 헤더 가드
+- 코드 생성
+- 조건부 컴파일
 
-// 매크로는 #define 지시자를 이용해 정의
-// */
+매크로는 #define 지시자를 이용해 정의
+*/
 
-// // C에서 매크로 정의하기
-// #define ABC 5
-// int main(int argc, char** argv) {
-//     int x = 2;
-//     int y = ABC;
-//     int z = x + y;
-//     return 0;
-// }
+// C에서 매크로 정의하기
+#define ABC 5
+int main(int argc, char** argv) {
+    int x = 2;
+    int y = ABC;
+    int z = x + y;
+    return 0;
+}
 
-// // C에서 매크로 함수 아닌 매크로 함수 정의하기
-// #define ADD(x, y) x + y
+// C에서 매크로 함수 아닌 매크로 함수 정의하기
+#define ADD(x, y) x + y
 
-// int main1(int argc, char** argv) {
-//     int x = 2;
-//     int y = ABC;
-//     int z = ADD(x, y);
-//     return 0;
-// }
+int main1(int argc, char** argv) {
+    int x = 2;
+    int y = ABC;
+    int z = ADD(x, y);
+    return 0;
+}
 
-// // 선언되지 않은 식별자 오류가 발생하는 매크로 정의
-// #define CODE \
-// printf("%d\n", i);
+// 선언되지 않은 식별자 오류가 발생하는 매크로 정의
+#define CODE \
+printf("%d\n", i);
 
-// int main() {
-//     CODE
-//     return 0;
-// }
+int main() {
+    CODE
+    return 0;
+}
 
 // 여기서 i가 선언되지 않았다고 에러가 표시된다
 
 // 루프를 생성하는 매크로를 사용하기
-// #include <stdio.h>
+#include <stdio.h>
 
-// #define PRINT(a) printf("%d\n", a);
-// #define LOOP(v, s, e) for (int v = s; v <= e; v ++) {
-// #define ENDLOOP }
+#define PRINT(a) printf("%d\n", a);
+#define LOOP(v, s, e) for (int v = s; v <= e; v ++) {
+#define ENDLOOP }
 
-// int main() {
-//     LOOP(counter, 1, 10)
-//     PRINT(counter)
-//     ENDLOOP
-//     return 0;
-// }
+int main() {
+    LOOP(counter, 1, 10)
+    PRINT(counter)
+    ENDLOOP
+    return 0;
+}
 // 매크로는 존나게 신기하다
 
 // DSL이 무엇인가
@@ -96,4 +96,33 @@ int main() {
         // 입력이 "cut"과 일치할 때 수행할 코드
     }
     return 0;  // 프로그램 종료
+}
+
+// 이 코드가 전처리 된다면 이 코드가 된다
+
+/*
+... content of stdio.h
+
+... content of string.h
+*/
+// 전처리 되어서 코드 내용이 바뀐것을 확인 할 수 있다
+int main() {
+    char copy_cmd[256] = ""; strcpy(copy_cmd, "copy");
+    char paste_cmd[256] = ""; strcpy(paste_cmd, "paste");
+    char cut_cmd[256] = ""; strcpy(cut_cmd, "cut");
+    char cmd[256];
+    scanf("%s", cmd);
+    if (strcmp(cmd, copy_cmd) == 0)
+    {
+        /* code */
+    }
+    if (strcmp(cmd, paste_cmd) == 0)
+    {
+        /* code */
+    }
+    if (strcmp(cmd, cut_cmd) == 0)
+    {
+        /* code */
+    }
+    return 0;
 }
