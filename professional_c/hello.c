@@ -126,3 +126,50 @@ int main() {
     }
     return 0;
 }
+
+// 가변 인자 매크로에 대해 배워봅시다
+// 가변 인자 매크로는 가변 인수를 받을 수 있습니다
+
+/*
+간단한 예제를 보겠습니다
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define VERSION "2.3.4"
+
+#define LOG_ERROR(format, ...) \
+fprintf(stderr, format, __VA_ARGS__)
+
+int main() {
+    
+    if (args < 3) {
+    LOG_ERROR("Invalid number of arguments for version %s\n.", VERSION);
+    exit(1);
+    }
+
+
+    return 0;
+}
+
+// 루프를 모방한 가변 인자 매크로 사용하기
+
+#include <stdio.h>
+
+#define LOOP_3(X, ...) \
+    printf("%s\n", #X);
+#define LOOP_2(X, ...) \
+    LOOP_3(__VA_ARGS__)
+#define LOOP_1(X, ...) \
+    LOOP_2(__VA_ARGS__)
+#define LOOP(...) \
+    LOOP_1(__VA_ARGS__)
+
+int main() {
+    LOOP(copy, paste cut)
+    LOOP(copy, paste, cut)
+    LOOP(copy, paste, cut, select)
+    
+    return 0;
+}
